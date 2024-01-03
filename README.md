@@ -19,7 +19,7 @@ This repo contains a script which will deploy any runnable .wasm as a hosted app
 ## Running the deployment.
 
 1.  Build your .wasm application using tools of choice.
-2.  Deploy the wasm from the commamd line.
+2.  Deploy the wasm from the command line.
 
 ## Environment Variables
 
