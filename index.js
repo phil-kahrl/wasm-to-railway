@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { buildSchema } = require('graphql');
 
-const API_TOKEN_ENV_KEY = "RAILWAY_API_TOKEN";
+const API_TOKEN_ENV_KEY = "RAILWAY_API_KEY";
 const RAILWAY_PROJECT_ID_KEY = "RAILWAY_PROJECT_ID";
 const RAILWAY_DOCKER_IMAGE_URL_KEY = "RAILWAY_DOCKER_IMAGE_URL";
 
@@ -34,6 +34,7 @@ const headers = {
   'Authorization': `Bearer ${apiToken}`,
 };
 
+
 // The GraphQL API endpoint
 const apiUrl = 'https://backboard.railway.app/graphql/v2';
 
@@ -62,15 +63,26 @@ const createService = () => {
             id
         }
     }`;
+
+    console.log("runing query ...")
+
+    console.log(query)
     
     axios.post(apiUrl, { query, operationName: "serviceCreate" }, { headers }).then(response => {
-        console.log("Service create request complete:");
-        console.log(response.data);
+        if (response.data.errors) {
+            console.error("Request returned an error response");
+            console.info(JSON.stringify(response.data.errors));
+        } else {
+            console.log("Successfully created service");
+            console.log(JSON.stringify(response.data));
+
+        }
     }).catch(error => {
         console.error('Error making GraphQL request:', error.message);
     });
 }
 
 createService();
+
 
 
