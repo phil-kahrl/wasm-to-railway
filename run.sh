@@ -35,17 +35,17 @@ ls -l | echo
 
 echo "Building container ..."
 
-docker build -t $DOCKER_ID/wasm_server:v1 .
+docker build -t $DOCKER_ID/wasm_app_server:v0 .
 
 echo "Tagging container ..."
  
-docker tag $DOCKER_ID/wasm_server:v1 $DOCKER_ID/wasm_server:v1-release
+docker tag $DOCKER_ID/wasm_app_server:v0 $DOCKER_ID/wasm_app_server:latest
 
 echo "Pushing container ..."
 
-docker push $DOCKER_ID/wasm_server:v1-release
+docker push $DOCKER_ID/wasm_app_server:v0-release
 
-export RAILWAY_DOCKER_IMAGE_URL=hub.docker.com/r/$DOCKER_ID/wasm-server
+export RAILWAY_DOCKER_IMAGE_URL=hub.docker.com/r/$DOCKER_ID/wasm_app_server
 
 echo $RAILWAY_DOCKER_IMAGE_URL
 
