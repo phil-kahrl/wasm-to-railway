@@ -24,7 +24,9 @@ This repo contains a script which will deploy any runnable .wasm as a hosted app
 ## Environment Variables
 
 RAILWAY_API_KEY
+
 RAILWAY_PROJECT_ID
+
 DOCKER_ID
 
 ## Command line example:
@@ -32,10 +34,15 @@ DOCKER_ID
 The following example shows how to deploy from a git repo that builds an http server in wasm.
 
 `cd ..`
+
 `git clone git@github.com:phil-kahrl/wasm-server.git`
+
 `cd wasm-server`
+
 `cargo build --target wasm32-wasi --release`
+
 `cd ..`
+
 `./run.sh ../wasm-server/target/wasm32-wasi/release/server.wasm `
 
 
